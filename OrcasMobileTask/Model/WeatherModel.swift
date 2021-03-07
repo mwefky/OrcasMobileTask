@@ -14,6 +14,10 @@ struct WeatherModel: Codable {
     let cnt: Int
     let list: [List]
     let city: City
+    
+    init?() {
+        return nil
+    }
 }
 
 // MARK: - City

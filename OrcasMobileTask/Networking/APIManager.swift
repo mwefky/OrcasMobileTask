@@ -17,8 +17,6 @@ class APIManager {
     
     func getWeather(with cityName: String,completed: @escaping (WeatherModel?, Error?)->()){
         
-        
-        
         Network.shared.fetchCodableObject(method: .get, url: "\(baseURL)q=\(cityName)&appid=\(APIKEY)", parameters: nil) { (result, error) in
                         if error != nil {
                 completed(nil,error)

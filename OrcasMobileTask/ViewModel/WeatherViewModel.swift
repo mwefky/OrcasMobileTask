@@ -10,10 +10,10 @@ import RxRelay
 
 struct WeatherViewModel {
     
-    var feedListvar = BehaviorRelay(value: [WeatherModel]())
+    var feedListvar = BehaviorRelay(value: WeatherModel())
     var errorvar = BehaviorRelay(value: "")
     
-    var feedList: Observable<([WeatherModel])> {
+    var feedList: Observable<(WeatherModel?)> {
         return feedListvar.asObservable()
     }
     
@@ -27,7 +27,8 @@ struct WeatherViewModel {
             if error != nil {
                 print(error)
             }else {
-                print(weather)
+                guard let feed = weather else {return}
+                feedListvar.accept(feed)
             }
         }
     }
