@@ -9,12 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     //MARK:- variables
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 240, height: 20))
     var weatherViewModel = WeatherViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherViewModel.fetchRemoteFeed()
         
         initNavBar()
     }
@@ -24,6 +23,19 @@ class ViewController: UIViewController {
         searchBar.placeholder = "Enter City Name"
         let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        
+        let search = UIImage(named: "SearchArrow")?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: search, style:.plain, target: self, action: #selector(searchBtnTapped))
+    }
+    
+    
+    //MARK:- Actions
+    @objc func searchBtnTapped(){
+        if searchBar.text == "" {
+            print("no Values")
+        }else {
+            weatherViewModel.fetchRemoteFeed(with: searchBar.text ?? "")
+        }
     }
 
 }

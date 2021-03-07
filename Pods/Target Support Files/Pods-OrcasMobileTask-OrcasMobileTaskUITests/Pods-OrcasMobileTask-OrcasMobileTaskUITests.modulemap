@@ -1,0 +1,6 @@
+framework module Pods_OrcasMobileTask_OrcasMobileTaskUITests {
+  umbrella header "Pods-OrcasMobileTask-OrcasMobileTaskUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

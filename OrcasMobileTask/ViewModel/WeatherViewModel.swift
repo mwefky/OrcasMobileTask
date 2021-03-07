@@ -21,9 +21,9 @@ struct WeatherViewModel {
         return errorvar.asObservable()
     }
     
-    func fetchRemoteFeed(){
+    func fetchRemoteFeed(with cityName: String){
         
-        APIManager.shared.getWeather(with: "Cairo") { (weather, error) in
+        APIManager.shared.getWeather(with: cityName) { (weather, error) in
             if error != nil {
                 print(error)
             }else {
