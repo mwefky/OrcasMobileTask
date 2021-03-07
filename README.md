@@ -3,7 +3,6 @@
 *RXswift for data binding 
 *enum-driven table view for better reuse 
 *shared state APIManager for future thread safe network with multiple request 
+*unit test
+*UI Test
 
-TO-DO: 
-unit test
-UI Test
