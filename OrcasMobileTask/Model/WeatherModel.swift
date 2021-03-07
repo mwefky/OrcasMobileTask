@@ -9,7 +9,9 @@ import Foundation
 import CodableCache
 
 // MARK: - WeatherModel
-struct WeatherModel: Codable {
+struct WeatherModel: Codable, Equatable {
+   
+    
     let cod: String
     let message: Double
     let cnt: Int
@@ -18,6 +20,10 @@ struct WeatherModel: Codable {
     
     init?() {
         return nil
+    }
+    
+    static func == (lhs: WeatherModel, rhs: WeatherModel) -> Bool {
+        return true
     }
 }
 

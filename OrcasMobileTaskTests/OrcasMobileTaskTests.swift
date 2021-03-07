@@ -9,19 +9,52 @@ import XCTest
 @testable import OrcasMobileTask
 
 class OrcasMobileTaskTests: XCTestCase {
-
+    var mockNetwork: Network!
+    var mockCached: weatherManager!
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mockNetwork = Network.shared
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockNetwork = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testValidateNetWorkCallsForVenue(){
+        
+        let url = "https://api.openweathermap.org/data/2.5/forecast?q=Cairo&appid=eeaa2ec22ee3bc9f60c63de7cd76b879"
+        
+        let promise = expectation(description: "Status code: 200")
+        mockNetwork.fetchCodableObject(method: .get, url: url, parameters: nil) { (response, error) in
+            if let error = error {
+                XCTFail("Error: \(error.localizedDescription)")
+                return
+            } else if response != nil {
+                promise.fulfill()
+            }
+        }
+        wait(for: [promise], timeout: 5)
     }
+    
+    func testCallToWeatherMapCompletes(){
+        let url = "https://api.openweathermap.org/data/2.5/forecast?q=Cairo&appid=eeaa2ec22ee3bc9f60c63de7cd76b879"
+        let promise = expectation(description: "Completion handler invoked")
+        var responseError: Error?
+        var responseModel: WeatherModel?
+        mockNetwork.fetchCodableObject(method: .get, url: url, parameters: nil) { (response, error) in
+            responseError = error
+            responseModel = try? JSONDecoder().decode(WeatherModel.self, from: response!)
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        XCTAssertNil(responseError)
+        mockCached = weatherManager(cacheKey: "Cairo")
+        let cachedMocked = mockCached.getWeather()
+    
+        XCTAssertEqual(cachedMocked, responseModel)
+    }
+    
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
