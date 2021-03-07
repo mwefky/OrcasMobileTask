@@ -6,7 +6,7 @@ target 'OrcasMobileTask' do
   use_frameworks!
 
   pod 'Alamofire'
-  pod 'SDWebImage'
+  pod 'CodableCache'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
 

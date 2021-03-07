@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CodableCache
 
 // MARK: - WeatherModel
 struct WeatherModel: Codable {
@@ -99,4 +100,26 @@ struct Weather: Codable {
 // MARK: - Wind
 struct Wind: Codable {
     let speed, deg: Double
+}
+
+
+
+//MARK: - caching
+final class weatherManager {
+
+    let cache: CodableCache<WeatherModel>
+
+    init(cacheKey: AnyHashable) {
+        cache = CodableCache<WeatherModel>(key: cacheKey)
+    }
+
+    func getWeather() -> WeatherModel? {
+        return cache.get()
+    }
+
+    func set(weather: WeatherModel) throws {
+        try? cache.set(value: weather)
+    }
+
+
 }
