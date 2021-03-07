@@ -13,8 +13,7 @@ class APIManager {
     static let shared = APIManager()
     
     let baseURL = "https://api.openweathermap.org/data/2.5/forecast?"
-    let APIKEY = ""
-        //"eeaa2ec22ee3bc9f60c63de7cd76b879"
+    let APIKEY =  "eeaa2ec22ee3bc9f60c63de7cd76b879"
     
     func getWeather(with cityName: String,completed: @escaping (WeatherModel?, Error?)->()){
         

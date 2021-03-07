@@ -20,6 +20,8 @@
 		5907AA2E25F5385900B2505E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA2D25F5385900B2505E /* WeatherModel.swift */; };
 		5907AA3B25F5480100B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
 		5907AA3C25F5480100B2505E /* DailyWeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */; };
+		5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
+		5907AA5025F5832600B2505E /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */; };
 		D4DF7DABC30C937E7EED2D7F /* Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A17849B0107E8AED8232F300 /* Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework */; };
 		E84D186CD0F82A465EB1A314 /* Pods_OrcasMobileTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23E45CE3793DE15C66A753E /* Pods_OrcasMobileTask.framework */; };
 		F0D48E0C8C9FB0A600FA80B5 /* Pods_OrcasMobileTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34870A9192E8AEC31BBDFC38 /* Pods_OrcasMobileTaskTests.framework */; };
@@ -64,6 +66,8 @@
 		5907AA2D25F5385900B2505E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherTableViewCell.xib; sourceTree = "<group>"; };
+		5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
+		5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		7967A0590818AE952E64036A /* Pods-OrcasMobileTaskTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrcasMobileTaskTests.release.xcconfig"; path = "Target Support Files/Pods-OrcasMobileTaskTests/Pods-OrcasMobileTaskTests.release.xcconfig"; sourceTree = "<group>"; };
 		83D8514CE81347CF9147BCCB /* Pods-OrcasMobileTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrcasMobileTask.release.xcconfig"; path = "Target Support Files/Pods-OrcasMobileTask/Pods-OrcasMobileTask.release.xcconfig"; sourceTree = "<group>"; };
 		A17849B0107E8AED8232F300 /* Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,10 +190,28 @@
 		5907AA3525F547CD00B2505E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5907AA4C25F5830E00B2505E /* errorTableViewCell */,
+				5907AA4B25F5830100B2505E /* DailyWeatherTableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5907AA4B25F5830100B2505E /* DailyWeatherTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
 				5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */,
 				5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */,
 			);
-			path = View;
+			path = DailyWeatherTableViewCell;
+			sourceTree = "<group>";
+		};
+		5907AA4C25F5830E00B2505E /* errorTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */,
+				5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */,
+			);
+			path = errorTableViewCell;
 			sourceTree = "<group>";
 		};
 		9F70D69CB7D9FC91C85D0506 /* Frameworks */ = {
@@ -323,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907AA5025F5832600B2505E /* ErrorTableViewCell.xib in Resources */,
 				5907AA3C25F5480100B2505E /* DailyWeatherTableViewCell.xib in Resources */,
 				5907A9E625F534D100B2505E /* LaunchScreen.storyboard in Resources */,
 				5907A9E325F534D100B2505E /* Assets.xcassets in Resources */,
@@ -454,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */,
 				5907AA1925F5353300B2505E /* WeatherViewModel.swift in Sources */,
 				5907AA1325F5351C00B2505E /* APIManager.swift in Sources */,
 				5907A9DE25F534D000B2505E /* ViewController.swift in Sources */,
