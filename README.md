@@ -5,4 +5,6 @@
 *shared state APIManager for future thread safe network with multiple request 
 *unit test
 *UI Test
+*SwiftLint update 
+*dismiss keyboard on drag / search button tapped 
 
