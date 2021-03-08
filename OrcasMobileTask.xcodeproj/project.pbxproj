@@ -15,7 +15,7 @@
 		5907A9E625F534D100B2505E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9E425F534D100B2505E /* LaunchScreen.storyboard */; };
 		5907A9F125F534D100B2505E /* OrcasMobileTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9F025F534D100B2505E /* OrcasMobileTaskTests.swift */; };
 		5907A9FC25F534D100B2505E /* OrcasMobileTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9FB25F534D100B2505E /* OrcasMobileTaskUITests.swift */; };
-		5907AA1225F5351C00B2505E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* Network.swift */; };
+		5907AA1225F5351C00B2505E /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* ApiRouter.swift */; };
 		5907AA1325F5351C00B2505E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* ApiClient.swift */; };
 		5907AA1925F5353300B2505E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1825F5353300B2505E /* WeatherViewModel.swift */; };
 		5907AA2E25F5385900B2505E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA2D25F5385900B2505E /* WeatherModel.swift */; };
@@ -30,7 +30,7 @@
 		5907AB3625F6534000B2505E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* ApiClient.swift */; };
 		5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
 		5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
-		5907AB4225F6535800B2505E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* Network.swift */; };
+		5907AB4225F6535800B2505E /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* ApiRouter.swift */; };
 		9A0395E648365E1A43CAAC03 /* Pods_OrcasMobileTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5879586D4AD88AB1020B359C /* Pods_OrcasMobileTask.framework */; };
 		B4121E9A737527327F5C814E /* Pods_OrcasMobileTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE99D4801E095E26BFF0374 /* Pods_OrcasMobileTaskTests.framework */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		5907A9F725F534D100B2505E /* OrcasMobileTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrcasMobileTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907A9FB25F534D100B2505E /* OrcasMobileTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrcasMobileTaskUITests.swift; sourceTree = "<group>"; };
 		5907A9FD25F534D100B2505E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5907AA1025F5351C00B2505E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		5907AA1025F5351C00B2505E /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		5907AA1125F5351C00B2505E /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		5907AA1825F5353300B2505E /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5907AA2D25F5385900B2505E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5907AA1125F5351C00B2505E /* ApiClient.swift */,
-				5907AA1025F5351C00B2505E /* Network.swift */,
+				5907AA1025F5351C00B2505E /* ApiRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -527,7 +527,7 @@
 				5907A9DA25F534D000B2505E /* AppDelegate.swift in Sources */,
 				5907AA2E25F5385900B2505E /* WeatherModel.swift in Sources */,
 				5907AA3B25F5480100B2505E /* DailyWeatherTableViewCell.swift in Sources */,
-				5907AA1225F5351C00B2505E /* Network.swift in Sources */,
+				5907AA1225F5351C00B2505E /* ApiRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +545,7 @@
 			files = (
 				5907AB2625F6531300B2505E /* WeatherViewController.swift in Sources */,
 				5907AB2E25F6532900B2505E /* WeatherViewModel.swift in Sources */,
-				5907AB4225F6535800B2505E /* Network.swift in Sources */,
+				5907AB4225F6535800B2505E /* ApiRouter.swift in Sources */,
 				5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */,
 				5907AB3625F6534000B2505E /* ApiClient.swift in Sources */,
 				5907AB2F25F6532E00B2505E /* WeatherModel.swift in Sources */,
