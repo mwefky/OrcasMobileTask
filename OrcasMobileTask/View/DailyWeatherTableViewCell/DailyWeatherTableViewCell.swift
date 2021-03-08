@@ -17,7 +17,7 @@ class DailyWeatherTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setUpCell(weatherdate: String, weatherDescription: String){
+    func setUpCell(weatherdate: String, weatherDescription: String) {
         date.text = weatherdate
         state.text = weatherDescription
     }

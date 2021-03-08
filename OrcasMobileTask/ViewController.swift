@@ -8,11 +8,13 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController {
-    //MARK:- variables
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 240, height: 20))
+class ViewController: UIViewController, UISearchBarDelegate {
+    // MARK: - variables
+    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 240, height: 20))
     var weatherViewModel = WeatherViewModel()
     var disoseBag = DisposeBag()
+    let weatherTVCID = "DailyWeatherTableViewCell"
+    let errorTVCID = "ErrorTableViewCell"
     var tableViewState: State? {
         didSet {
             tableView.reloadData()
@@ -24,20 +26,16 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    //MARK:- Outlets
+    // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         bindViewModel()
-        
     }
 
-    //MARK:- binding View Model
-    func bindViewModel(){
+    // MARK: - binding View Model
+    func bindViewModel() {
         weatherViewModel.feedList.subscribe(onNext: { [weak self] (feeds) in
                 guard let localfeeds = feeds else {return}
                 self?.weatherFeed = localfeeds
@@ -46,37 +44,39 @@ class ViewController: UIViewController {
         weatherViewModel.error.subscribe(onNext: { [weak self] (error) in
             if error == "not data" {
                 self?.tableViewState = .error
-            }else if error == "not accurate data" {
+            } else if error == "not accurate data" {
                 self?.tableViewState = .oldData
             }
         }).disposed(by: disoseBag)
     }
-    
-    //MARK:- UI setup
-    func setupUI(){
-        //nav bar
+    // MARK: - UI setup
+    func setupUI() {
+        // nav bar
         searchBar.placeholder = "Enter City Name"
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
+        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-        
         let search = UIImage(named: "SearchArrow")?.withRenderingMode(.alwaysOriginal)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: search, style:.plain, target: self, action: #selector(searchBtnTapped))
-        //table view
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: search, style: .plain, target: self, action: #selector(searchBtnTapped))
+        searchBar.delegate = self
+        // table view
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "DailyWeatherTableViewCell", bundle: nil), forCellReuseIdentifier: "DailyWeatherTableViewCell")
-        tableView.register(UINib(nibName: "ErrorTableViewCell", bundle: nil), forCellReuseIdentifier: "ErrorTableViewCell")
-        
+        tableView.keyboardDismissMode = .onDrag
+        tableView.register(UINib(nibName: weatherTVCID, bundle: nil), forCellReuseIdentifier: weatherTVCID)
+        tableView.register(UINib(nibName: errorTVCID, bundle: nil), forCellReuseIdentifier: errorTVCID)
     }
-    
-    
-    //MARK:- Actions
-    @objc func searchBtnTapped(){
+    // MARK: - Actions
+    @objc func searchBtnTapped() {
         if searchBar.text == "" {
             print("no Values")
-        }else {
+        } else {
             weatherViewModel.fetchRemoteFeed(with: searchBar.text ?? "")
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBtnTapped()
+        searchBar.resignFirstResponder()
     }
 
 }
@@ -94,20 +94,22 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable force_cast
         switch tableViewState {
         case .error:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ErrorTableViewCell") as! ErrorTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: errorTVCID) as! ErrorTableViewCell
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DailyWeatherTableViewCell") as! DailyWeatherTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: weatherTVCID) as! DailyWeatherTableViewCell
             let weatherRow = weatherFeed?.list[indexPath.row]
             cell.setUpCell(weatherdate: weatherRow?.dtTxt ?? "", weatherDescription: weatherRow?.weather.first?.weatherDescription ?? "")
             return cell
+        // swiftlint:enable force_cast
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100 
+            return 100
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -119,10 +121,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-
-
-//Mark:- tableView state
+// MARK: - binding View Model
 enum State {
   case oldData
   case populated

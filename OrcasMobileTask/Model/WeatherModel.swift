@@ -11,7 +11,6 @@ import CodableCache
 // MARK: - WeatherModel
 struct WeatherModel: Codable, Equatable {
    
-    
     let cod: String
     let message: Double
     let cnt: Int
@@ -29,7 +28,6 @@ struct WeatherModel: Codable, Equatable {
 
 // MARK: - City
 struct City: Codable {
-    let id: Int
     let name: String
     let coord: Coord
     let country: String
@@ -42,7 +40,6 @@ struct Coord: Codable {
 
 // MARK: - List
 struct List: Codable {
-    let dt: Int
     let main: Main
     let weather: [Weather]
     let clouds: Clouds
@@ -52,7 +49,7 @@ struct List: Codable {
     let rain, snow: Rain?
 
     enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, sys
+        case main, weather, clouds, wind, sys
         case dtTxt = "dt_txt"
         case rain, snow
     }
@@ -93,11 +90,10 @@ struct Sys: Codable {
 
 // MARK: - Weather
 struct Weather: Codable {
-    let id: Int
     let main, weatherDescription, icon: String
 
     enum CodingKeys: String, CodingKey {
-        case id, main
+        case main
         case weatherDescription = "description"
         case icon
     }
@@ -108,10 +104,8 @@ struct Wind: Codable {
     let speed, deg: Double
 }
 
-
-
-//MARK: - caching
-final class weatherManager {
+// MARK: - caching
+final class WeatherManager {
 
     let cache: CodableCache<WeatherModel>
 
@@ -126,6 +120,4 @@ final class weatherManager {
     func set(weather: WeatherModel) throws {
         try? cache.set(value: weather)
     }
-
-
 }

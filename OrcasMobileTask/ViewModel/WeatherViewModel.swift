@@ -8,7 +8,6 @@ import Foundation
 import RxSwift
 import RxRelay
 
-
 struct WeatherViewModel {
     
     var feedListvar = BehaviorRelay(value: WeatherModel())
@@ -22,23 +21,20 @@ struct WeatherViewModel {
         return errorvar.asObservable()
     }
     
-    func fetchRemoteFeed(with cityName: String){
-        let weatherManger = weatherManager(cacheKey: cityName)
+    func fetchRemoteFeed(with cityName: String) {
+        let weatherManger = WeatherManager(cacheKey: cityName)
         APIManager.shared.getWeather(with: cityName) { (weather, error) in
             if error != nil {
-                //MARK:- get cache
+                // MARK: - get cache
                 if let cachedWeather = weatherManger.getWeather() {
                     feedListvar.accept(cachedWeather)
                     errorvar.accept("not accurate data")
-                }else {
+                } else {
                     errorvar.accept("not data")
                 }
-                
-                
-                errorvar.accept("")
-            }else {
+            } else {
                 guard let feed = weather else {return}
-                //MARK:- set cache
+                // MARK: - set cache
                 try? weatherManger.set(weather: feed)
                 feedListvar.accept(feed)
             }

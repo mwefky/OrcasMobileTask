@@ -10,7 +10,7 @@ import XCTest
 
 class OrcasMobileTaskTests: XCTestCase {
     var mockNetwork: Network!
-    var mockCached: weatherManager!
+    var mockCached: WeatherManager!
     override func setUpWithError() throws {
         mockNetwork = Network.shared
     }
@@ -20,7 +20,7 @@ class OrcasMobileTaskTests: XCTestCase {
         super.tearDown()
     }
 
-    func testValidateNetWorkCallsForVenue(){
+    func testValidateNetWorkCallsForVenue() {
         
         let url = "https://api.openweathermap.org/data/2.5/forecast?q=Cairo&appid=eeaa2ec22ee3bc9f60c63de7cd76b879"
         
@@ -36,7 +36,7 @@ class OrcasMobileTaskTests: XCTestCase {
         wait(for: [promise], timeout: 5)
     }
     
-    func testCallToWeatherMapCompletes(){
+    func testCallToWeatherMapCompletes() {
         let url = "https://api.openweathermap.org/data/2.5/forecast?q=Cairo&appid=eeaa2ec22ee3bc9f60c63de7cd76b879"
         let promise = expectation(description: "Completion handler invoked")
         var responseError: Error?
@@ -49,13 +49,12 @@ class OrcasMobileTaskTests: XCTestCase {
         wait(for: [promise], timeout: 5)
         
         XCTAssertNil(responseError)
-        mockCached = weatherManager(cacheKey: "Cairo")
+        mockCached = WeatherManager(cacheKey: "Cairo")
         let cachedMocked = mockCached.getWeather()
     
         XCTAssertEqual(cachedMocked, responseModel)
     }
     
-
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {

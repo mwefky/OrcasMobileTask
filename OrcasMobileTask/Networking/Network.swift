@@ -10,11 +10,8 @@ import Alamofire
 
 class Network {
     static let shared = Network()
-    
-    func fetchCodableObject(method: HTTPMethod, url: String, parameters: [String: Any]?,completed: @escaping (Data?, Error?)->() ){
-        
-        AF.request(URL(string: url)!, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON{response in
-            
+    func fetchCodableObject(method: HTTPMethod, url: String, parameters: [String: Any]?, completed: @escaping (Data?, Error?) -> Void) {
+        AF.request(URL(string: url)!, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON {response in
             print("URL is: \(response.request!.url!.absoluteString)")
             switch response.result {
             case .success(let value):
@@ -31,7 +28,7 @@ class Network {
                     
                 } else {
                     let error = NSError(domain: "", code: response.response!.statusCode, userInfo: nil)
-                    completed(nil,error)
+                    completed(nil, error)
                 }
                 
             case .failure(let error):
