@@ -9,25 +9,25 @@
 /* Begin PBXBuildFile section */
 		4C6EA69E3BFA7D8CFAE65F2B /* Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42F4412D337368CF92D0DB9A /* Pods_OrcasMobileTask_OrcasMobileTaskUITests.framework */; };
 		5907A9DA25F534D000B2505E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9D925F534D000B2505E /* AppDelegate.swift */; };
-		5907A9DE25F534D000B2505E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9DD25F534D000B2505E /* ViewController.swift */; };
+		5907A9DE25F534D000B2505E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9DD25F534D000B2505E /* WeatherViewController.swift */; };
 		5907A9E125F534D000B2505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9DF25F534D000B2505E /* Main.storyboard */; };
 		5907A9E325F534D100B2505E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9E225F534D100B2505E /* Assets.xcassets */; };
 		5907A9E625F534D100B2505E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9E425F534D100B2505E /* LaunchScreen.storyboard */; };
 		5907A9F125F534D100B2505E /* OrcasMobileTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9F025F534D100B2505E /* OrcasMobileTaskTests.swift */; };
 		5907A9FC25F534D100B2505E /* OrcasMobileTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9FB25F534D100B2505E /* OrcasMobileTaskUITests.swift */; };
 		5907AA1225F5351C00B2505E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* Network.swift */; };
-		5907AA1325F5351C00B2505E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* APIManager.swift */; };
+		5907AA1325F5351C00B2505E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* ApiClient.swift */; };
 		5907AA1925F5353300B2505E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1825F5353300B2505E /* WeatherViewModel.swift */; };
 		5907AA2E25F5385900B2505E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA2D25F5385900B2505E /* WeatherModel.swift */; };
 		5907AA3B25F5480100B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
 		5907AA3C25F5480100B2505E /* DailyWeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */; };
 		5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
 		5907AA5025F5832600B2505E /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */; };
-		5907AB2625F6531300B2505E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9DD25F534D000B2505E /* ViewController.swift */; };
+		5907AB2625F6531300B2505E /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9DD25F534D000B2505E /* WeatherViewController.swift */; };
 		5907AB2725F6531800B2505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9DF25F534D000B2505E /* Main.storyboard */; };
 		5907AB2E25F6532900B2505E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1825F5353300B2505E /* WeatherViewModel.swift */; };
 		5907AB2F25F6532E00B2505E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA2D25F5385900B2505E /* WeatherModel.swift */; };
-		5907AB3625F6534000B2505E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* APIManager.swift */; };
+		5907AB3625F6534000B2505E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* ApiClient.swift */; };
 		5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
 		5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
 		5907AB4225F6535800B2505E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* Network.swift */; };
@@ -60,7 +60,7 @@
 		5879586D4AD88AB1020B359C /* Pods_OrcasMobileTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrcasMobileTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907A9D625F534D000B2505E /* OrcasMobileTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrcasMobileTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907A9D925F534D000B2505E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5907A9DD25F534D000B2505E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5907A9DD25F534D000B2505E /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		5907A9E025F534D000B2505E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5907A9E225F534D100B2505E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5907A9E525F534D100B2505E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		5907A9FB25F534D100B2505E /* OrcasMobileTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrcasMobileTaskUITests.swift; sourceTree = "<group>"; };
 		5907A9FD25F534D100B2505E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5907AA1025F5351C00B2505E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		5907AA1125F5351C00B2505E /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5907AA1125F5351C00B2505E /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		5907AA1825F5353300B2505E /* WeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		5907AA2D25F5385900B2505E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,15 +138,13 @@
 		5907A9D825F534D000B2505E /* OrcasMobileTask */ = {
 			isa = PBXGroup;
 			children = (
+				59E1C37A25F6DC4C006D1286 /* ViewController */,
 				5907AA3525F547CD00B2505E /* View */,
 				5907AA2C25F537DC00B2505E /* Model */,
 				5907AA1725F5352B00B2505E /* ViewModel */,
 				5907AA0F25F534F500B2505E /* Networking */,
 				5907A9D925F534D000B2505E /* AppDelegate.swift */,
-				5907A9DD25F534D000B2505E /* ViewController.swift */,
-				5907A9DF25F534D000B2505E /* Main.storyboard */,
 				5907A9E225F534D100B2505E /* Assets.xcassets */,
-				5907A9E425F534D100B2505E /* LaunchScreen.storyboard */,
 				5907A9E725F534D100B2505E /* Info.plist */,
 			);
 			path = OrcasMobileTask;
@@ -173,7 +171,7 @@
 		5907AA0F25F534F500B2505E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				5907AA1125F5351C00B2505E /* APIManager.swift */,
+				5907AA1125F5351C00B2505E /* ApiClient.swift */,
 				5907AA1025F5351C00B2505E /* Network.swift */,
 			);
 			path = Networking;
@@ -198,6 +196,7 @@
 		5907AA3525F547CD00B2505E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59E1C38125F6DCA3006D1286 /* Main */,
 				5907AA4C25F5830E00B2505E /* errorTableViewCell */,
 				5907AA4B25F5830100B2505E /* DailyWeatherTableViewCell */,
 			);
@@ -220,6 +219,23 @@
 				5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */,
 			);
 			path = errorTableViewCell;
+			sourceTree = "<group>";
+		};
+		59E1C37A25F6DC4C006D1286 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5907A9DD25F534D000B2505E /* WeatherViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		59E1C38125F6DCA3006D1286 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5907A9E425F534D100B2505E /* LaunchScreen.storyboard */,
+				5907A9DF25F534D000B2505E /* Main.storyboard */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		8981C83CBB21880B3D30CA5D /* Frameworks */ = {
@@ -506,8 +522,8 @@
 			files = (
 				5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */,
 				5907AA1925F5353300B2505E /* WeatherViewModel.swift in Sources */,
-				5907AA1325F5351C00B2505E /* APIManager.swift in Sources */,
-				5907A9DE25F534D000B2505E /* ViewController.swift in Sources */,
+				5907AA1325F5351C00B2505E /* ApiClient.swift in Sources */,
+				5907A9DE25F534D000B2505E /* WeatherViewController.swift in Sources */,
 				5907A9DA25F534D000B2505E /* AppDelegate.swift in Sources */,
 				5907AA2E25F5385900B2505E /* WeatherModel.swift in Sources */,
 				5907AA3B25F5480100B2505E /* DailyWeatherTableViewCell.swift in Sources */,
@@ -527,11 +543,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5907AB2625F6531300B2505E /* ViewController.swift in Sources */,
+				5907AB2625F6531300B2505E /* WeatherViewController.swift in Sources */,
 				5907AB2E25F6532900B2505E /* WeatherViewModel.swift in Sources */,
 				5907AB4225F6535800B2505E /* Network.swift in Sources */,
 				5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */,
-				5907AB3625F6534000B2505E /* APIManager.swift in Sources */,
+				5907AB3625F6534000B2505E /* ApiClient.swift in Sources */,
 				5907AB2F25F6532E00B2505E /* WeatherModel.swift in Sources */,
 				5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */,
 				5907A9FC25F534D100B2505E /* OrcasMobileTaskUITests.swift in Sources */,

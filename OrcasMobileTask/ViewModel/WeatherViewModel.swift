@@ -11,35 +11,38 @@ import RxRelay
 struct WeatherViewModel {
     
     var feedListvar = BehaviorRelay(value: WeatherModel())
+    var localFeedListvar = BehaviorRelay(value: WeatherModel())
     var errorvar = BehaviorRelay(value: "")
     
     var feedList: Observable<(WeatherModel?)> {
         return feedListvar.asObservable()
     }
     
+    var localFeedList: Observable<(WeatherModel?)> {
+        return localFeedListvar.asObservable()
+    }
     var error: Observable<String> {
         return errorvar.asObservable()
     }
     
+    var disposeBag = DisposeBag()
+    
     func fetchRemoteFeed(with cityName: String) {
-        
         let weatherManger = WeatherManager(cacheKey: cityName)
-        APIManager.shared.getWeather(with: cityName) { (weather, error) in
-            if error != nil {
-                // MARK: - get cache
-                if let cachedWeather = weatherManger.getWeather() {
-                    feedListvar.accept(cachedWeather)
-                    errorvar.accept("not accurate data")
+        
+        ApiClient.getWeather(cityName: cityName).observeOn(MainScheduler.instance)
+            .subscribe(onNext: { weatherList in
+                feedListvar.accept(weatherList)
+                try? weatherManger.set(weather: weatherList)
+                print("List of weather:", weatherList)
+            }, onError: { error in
+                if let localWeather = weatherManger.getWeather() {
+                    localFeedListvar.accept(localWeather)
                 } else {
-                    errorvar.accept("not data")
+                    errorvar.accept(error.localizedDescription)
                 }
-            } else {
-                guard let feed = weather else {return}
-                // MARK: - set cache
-                try? weatherManger.set(weather: feed)
-                feedListvar.accept(feed)
-            }
-        }
+            })
+            .disposed(by: disposeBag)
     }
     
 }

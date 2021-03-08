@@ -8,8 +8,7 @@
 import UIKit
 import RxSwift
 
-class ViewController: UIViewController, UISearchBarDelegate {
-    
+class WeatherViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     // MARK: - variables
     lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 240, height: 20))
     var weatherViewModel = WeatherViewModel()
@@ -42,12 +41,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
                 self?.weatherFeed = localfeeds
                 self?.tableViewState = .populated
             }).disposed(by: disoseBag)
-        weatherViewModel.error.subscribe(onNext: { [weak self] (error) in
-            if error == "not data" {
-                self?.tableViewState = .error
-            } else if error == "not accurate data" {
+        weatherViewModel.localFeedList.subscribe(onNext: { [weak self] (feeds) in
+                guard let localfeeds = feeds else {return}
+                self?.weatherFeed = localfeeds
                 self?.tableViewState = .oldData
-            }
+            }).disposed(by: disoseBag)
+        weatherViewModel.error.subscribe(onNext: { [weak self] (error) in
+            if error == "" {return}
+            self?.tableViewState = .error
         }).disposed(by: disoseBag)
     }
     
@@ -84,7 +85,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension WeatherViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableViewState {

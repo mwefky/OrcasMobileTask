@@ -7,39 +7,53 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
-class Network {
+enum ApiRouter: URLRequestConvertible {
     
-    static let shared = Network()
+    case getWeather(cityName: String)
     
-    func fetchCodableObject(method: HTTPMethod, url: String, parameters: [String: Any]?, completed: @escaping (Data?, Error?) -> Void) {
+    // MARK: - URLRequestConvertible
+    func asURLRequest() throws -> URLRequest {
+        let url = try NetworkConstants.BASEURL.asURL()
         
-        AF.request(URL(string: url)!, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON {response in
-            print("URL is: \(response.request!.url!.absoluteString)")
-            switch response.result {
-            case .success(let value):
-                print("Request success: \(value)")
-                print("==============================")
-                
-                if (200 ... 299).contains(response.response!.statusCode) {
-                    do {
-                        let jsonData = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
-                        completed(jsonData, nil)
-                    } catch let error {
-                        completed(nil, error)
-                    }
-                    
-                } else {
-                    let error = NSError(domain: "", code: response.response!.statusCode, userInfo: nil)
-                    completed(nil, error)
-                }
-                
-            case .failure(let error):
-                print("Request failed: \(error.localizedDescription)")
-                print("==============================")
-                completed(nil, error)
+        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        urlRequest.httpMethod = method.rawValue
+        
+        let encoding: ParameterEncoding = {
+            switch method {
+            case .get:
+                return URLEncoding.default
+            default:
+                return JSONEncoding.default
             }
-            
+        }()
+        
+        return try encoding.encode(urlRequest, with: parameters)
+    }
+    
+    // MARK: - HttpMethod
+    private var method: HTTPMethod {
+        switch self {
+        case .getWeather:
+            return .get
+        }
+    }
+    
+    // MARK: - Path
+    private var path: String {
+        switch self {
+        case .getWeather:
+            return "/data/2.5/forecast"
+        }
+    }
+    
+    // MARK: - Parameters
+    private var parameters: Parameters? {
+        switch self {
+        case .getWeather(let cityName):
+            return ["q": cityName,
+                    "appid": NetworkConstants.APIKEY]
         }
     }
 }

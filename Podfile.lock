@@ -10,7 +10,7 @@ PODS:
   - SwiftLint (0.43.0)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 5)
   - CodableCache
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
@@ -33,6 +33,6 @@ SPEC CHECKSUMS:
   RxSwift: 1e2e1f9570186967f617e49128ed26ccf1bafc8e
   SwiftLint: 0c645fdc6feed3e390c1701ab3cc669f88b42752
 
-PODFILE CHECKSUM: 251abc2c5e38f9b125ce750235034bd3cc232084
+PODFILE CHECKSUM: 2bb42db9466f2c77cc67dc4e41defed312afa1c2
 
 COCOAPODS: 1.10.1
