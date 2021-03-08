@@ -23,6 +23,14 @@
 		5907AA3C25F5480100B2505E /* DailyWeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */; };
 		5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
 		5907AA5025F5832600B2505E /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */; };
+		5907AB2625F6531300B2505E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907A9DD25F534D000B2505E /* ViewController.swift */; };
+		5907AB2725F6531800B2505E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5907A9DF25F534D000B2505E /* Main.storyboard */; };
+		5907AB2E25F6532900B2505E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1825F5353300B2505E /* WeatherViewModel.swift */; };
+		5907AB2F25F6532E00B2505E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA2D25F5385900B2505E /* WeatherModel.swift */; };
+		5907AB3625F6534000B2505E /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1125F5351C00B2505E /* APIManager.swift */; };
+		5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
+		5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
+		5907AB4225F6535800B2505E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* Network.swift */; };
 		9A0395E648365E1A43CAAC03 /* Pods_OrcasMobileTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5879586D4AD88AB1020B359C /* Pods_OrcasMobileTask.framework */; };
 		B4121E9A737527327F5C814E /* Pods_OrcasMobileTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE99D4801E095E26BFF0374 /* Pods_OrcasMobileTaskTests.framework */; };
 /* End PBXBuildFile section */
@@ -365,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907AB2725F6531800B2505E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +527,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907AB2625F6531300B2505E /* ViewController.swift in Sources */,
+				5907AB2E25F6532900B2505E /* WeatherViewModel.swift in Sources */,
+				5907AB4225F6535800B2505E /* Network.swift in Sources */,
+				5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */,
+				5907AB3625F6534000B2505E /* APIManager.swift in Sources */,
+				5907AB2F25F6532E00B2505E /* WeatherModel.swift in Sources */,
+				5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */,
 				5907A9FC25F534D100B2505E /* OrcasMobileTaskUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -783,6 +799,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				TEST_TARGET_NAME = OrcasMobileTask;
 			};
 			name = Debug;
@@ -805,6 +822,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
 				TEST_TARGET_NAME = OrcasMobileTask;
 			};
 			name = Release;

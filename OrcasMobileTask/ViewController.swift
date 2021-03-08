@@ -9,13 +9,14 @@ import UIKit
 import RxSwift
 
 class ViewController: UIViewController, UISearchBarDelegate {
+    
     // MARK: - variables
     lazy var searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 240, height: 20))
     var weatherViewModel = WeatherViewModel()
     var disoseBag = DisposeBag()
     let weatherTVCID = "DailyWeatherTableViewCell"
     let errorTVCID = "ErrorTableViewCell"
-    var tableViewState: State? {
+    var tableViewState: TableViewStateState? {
         didSet {
             tableView.reloadData()
         }
@@ -49,6 +50,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
             }
         }).disposed(by: disoseBag)
     }
+    
     // MARK: - UI setup
     func setupUI() {
         // nav bar
@@ -65,6 +67,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         tableView.register(UINib(nibName: weatherTVCID, bundle: nil), forCellReuseIdentifier: weatherTVCID)
         tableView.register(UINib(nibName: errorTVCID, bundle: nil), forCellReuseIdentifier: errorTVCID)
     }
+    
     // MARK: - Actions
     @objc func searchBtnTapped() {
         if searchBar.text == "" {
@@ -82,6 +85,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableViewState {
         case .empty:
@@ -121,8 +125,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
 // MARK: - binding View Model
-enum State {
+enum TableViewStateState {
   case oldData
   case populated
   case empty

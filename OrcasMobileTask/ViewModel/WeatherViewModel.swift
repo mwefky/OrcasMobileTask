@@ -22,6 +22,7 @@ struct WeatherViewModel {
     }
     
     func fetchRemoteFeed(with cityName: String) {
+        
         let weatherManger = WeatherManager(cacheKey: cityName)
         APIManager.shared.getWeather(with: cityName) { (weather, error) in
             if error != nil {

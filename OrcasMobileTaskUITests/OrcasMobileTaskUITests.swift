@@ -13,13 +13,14 @@ class OrcasMobileTaskUITests: XCTestCase {
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.mockviewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        let bundle = Bundle(for: type(of: self))
+        let storyBoard = UIStoryboard(name: "Main", bundle: bundle)
+        self.mockviewController =  storyBoard.instantiateInitialViewController() as? ViewController
+        self.mockviewController.loadView()
+        self.mockviewController.viewDidLoad()
     }
 
     override func tearDownWithError() throws {
-        self.mockviewController.loadView()
-        self.mockviewController.viewDidLoad()
     }
 
     func testExample() throws {
