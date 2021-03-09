@@ -24,7 +24,7 @@ class ApiClient {
                     observer.onNext(value)
                     observer.onCompleted()
                 case .failure(let error):
-                        observer.onError(error)
+                    observer.onError(error)
                 }
             }
             
@@ -33,9 +33,4 @@ class ApiClient {
             }
         }
     }
-}
-
-struct NetworkConstants {
-    static let BASEURL = "https://api.openweathermap.org"
-    static let APIKEY = "eeaa2ec22ee3bc9f60c63de7cd76b879"
 }

@@ -31,6 +31,7 @@
 		5907AB3725F6534600B2505E /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */; };
 		5907AB3B25F6534A00B2505E /* DailyWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA3925F5480100B2505E /* DailyWeatherTableViewCell.swift */; };
 		5907AB4225F6535800B2505E /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907AA1025F5351C00B2505E /* ApiRouter.swift */; };
+		59E1C3C225F7C43B006D1286 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1C3C125F7C43B006D1286 /* NetworkConstants.swift */; };
 		9A0395E648365E1A43CAAC03 /* Pods_OrcasMobileTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5879586D4AD88AB1020B359C /* Pods_OrcasMobileTask.framework */; };
 		B4121E9A737527327F5C814E /* Pods_OrcasMobileTaskTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE99D4801E095E26BFF0374 /* Pods_OrcasMobileTaskTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		5907AA3A25F5480100B2505E /* DailyWeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherTableViewCell.xib; sourceTree = "<group>"; };
 		5907AA4D25F5832600B2505E /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		5907AA4E25F5832600B2505E /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
+		59E1C3C125F7C43B006D1286 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		7BF6E5EBB5DB4AC7EB9BF4AF /* Pods-OrcasMobileTask-OrcasMobileTaskUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrcasMobileTask-OrcasMobileTaskUITests.release.xcconfig"; path = "Target Support Files/Pods-OrcasMobileTask-OrcasMobileTaskUITests/Pods-OrcasMobileTask-OrcasMobileTaskUITests.release.xcconfig"; sourceTree = "<group>"; };
 		89598A5C01F4D6B9D220B495 /* Pods-OrcasMobileTask-OrcasMobileTaskUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrcasMobileTask-OrcasMobileTaskUITests.debug.xcconfig"; path = "Target Support Files/Pods-OrcasMobileTask-OrcasMobileTaskUITests/Pods-OrcasMobileTask-OrcasMobileTaskUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC8A08ABE521ACE290EF51EE /* Pods-OrcasMobileTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrcasMobileTask.release.xcconfig"; path = "Target Support Files/Pods-OrcasMobileTask/Pods-OrcasMobileTask.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				5907AA1125F5351C00B2505E /* ApiClient.swift */,
 				5907AA1025F5351C00B2505E /* ApiRouter.swift */,
+				59E1C3C125F7C43B006D1286 /* NetworkConstants.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E1C3C225F7C43B006D1286 /* NetworkConstants.swift in Sources */,
 				5907AA4F25F5832600B2505E /* ErrorTableViewCell.swift in Sources */,
 				5907AA1925F5353300B2505E /* WeatherViewModel.swift in Sources */,
 				5907AA1325F5351C00B2505E /* ApiClient.swift in Sources */,

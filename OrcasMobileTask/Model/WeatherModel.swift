@@ -9,8 +9,22 @@ import Foundation
 import CodableCache
 
 // MARK: - WeatherModel
+
+struct WeatherDTO {
+    let weatherDate: String
+    let weatherCondtion: String
+    
+    init?() {
+        return nil
+    }
+    init(weatherDate: String, weatherCondtion: String) {
+        self.weatherDate = weatherDate
+        self.weatherCondtion = weatherCondtion
+    }
+}
+
 struct WeatherModel: Codable, Equatable {
-   
+    
     let cod: String
     let message: Double
     let cnt: Int
@@ -47,7 +61,7 @@ struct List: Codable {
     let sys: Sys
     let dtTxt: String
     let rain, snow: Rain?
-
+    
     enum CodingKeys: String, CodingKey {
         case main, weather, clouds, wind, sys
         case dtTxt = "dt_txt"
@@ -66,7 +80,7 @@ struct Main: Codable {
     let seaLevel, grndLevel: Double
     let humidity: Int
     let tempKf: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case tempMin = "temp_min"
@@ -91,7 +105,7 @@ struct Sys: Codable {
 // MARK: - Weather
 struct Weather: Codable {
     let main, weatherDescription, icon: String
-
+    
     enum CodingKeys: String, CodingKey {
         case main
         case weatherDescription = "description"
@@ -106,17 +120,17 @@ struct Wind: Codable {
 
 // MARK: - caching
 final class WeatherManager {
-
+    
     let cache: CodableCache<WeatherModel>
-
+    
     init(cacheKey: AnyHashable) {
         cache = CodableCache<WeatherModel>(key: cacheKey)
     }
-
+    
     func getWeather() -> WeatherModel? {
         return cache.get()
     }
-
+    
     func set(weather: WeatherModel) throws {
         try? cache.set(value: weather)
     }

@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate, UITableViewD
             tableView.reloadData()
         }
     }
-    var weatherFeed: WeatherModel?
+    var weatherFeed: [WeatherDTO?]?
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -29,27 +29,25 @@ class WeatherViewController: UIViewController, UISearchBarDelegate, UITableViewD
         setupUI()
         bindViewModel()
     }
-
+    
     // MARK: - binding View Model
     func bindViewModel() {
-        weatherViewModel.feedList.subscribe(onNext: { [weak self] (feeds) in
-                guard let localfeeds = feeds else {return}
-                self?.weatherFeed = localfeeds
-                self?.tableViewState = .populated
-            }).disposed(by: disoseBag)
-        weatherViewModel.localFeedList.subscribe(onNext: { [weak self] (feeds) in
-                guard let localfeeds = feeds else {return}
-                self?.weatherFeed = localfeeds
-                self?.tableViewState = .oldData
-            }).disposed(by: disoseBag)
         weatherViewModel.error.subscribe(onNext: { [weak self] (error) in
-            if error == "" {return}
             self?.tableViewState = .error
+        }).disposed(by: disoseBag)
+        weatherViewModel.localFeedList.subscribe(onNext: { [weak self] (feeds) in
+            self?.weatherFeed = feeds
+            self?.tableViewState = .oldData
+        }).disposed(by: disoseBag)
+        weatherViewModel.feedList.subscribe(onNext: { [weak self] (feeds) in
+            self?.weatherFeed = feeds
+            self?.tableViewState = .populated
         }).disposed(by: disoseBag)
     }
     
     // MARK: - UI setup
     func setupUI() {
+        tableViewState = .empty
         // nav bar
         searchBar.placeholder = "Enter City Name"
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
@@ -78,7 +76,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate, UITableViewD
         searchBtnTapped()
         searchBar.resignFirstResponder()
     }
-
+    
 }
 
 extension WeatherViewController {
@@ -90,7 +88,7 @@ extension WeatherViewController {
         case .error:
             return 1
         default:
-            return weatherFeed?.list.count ?? 0
+            return weatherFeed?.count ?? 0
         }
     }
     
@@ -102,15 +100,14 @@ extension WeatherViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: weatherTVCID) as! DailyWeatherTableViewCell
-            let weatherRow = weatherFeed?.list[indexPath.row]
-            cell.setUpCell(weatherdate: weatherRow?.dtTxt ?? "", weatherDescription: weatherRow?.weather.first?.weatherDescription ?? "")
+            cell.setUpCell(weatherdate: weatherFeed?[indexPath.row]?.weatherDate ?? "", weatherDescription: weatherFeed?[indexPath.row]?.weatherCondtion ?? "")
             return cell
         // swiftlint:enable force_cast
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
+        return 100
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -125,8 +122,8 @@ extension WeatherViewController {
 
 // MARK: - binding View Model
 enum TableViewStateState {
-  case oldData
-  case populated
-  case empty
-  case error
+    case oldData
+    case populated
+    case empty
+    case error
 }
