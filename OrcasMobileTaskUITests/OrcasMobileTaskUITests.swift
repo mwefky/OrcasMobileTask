@@ -9,13 +9,13 @@ import XCTest
 @testable import OrcasMobileTask
 class OrcasMobileTaskUITests: XCTestCase {
 
-    var mockviewController: ViewController!
+    var mockviewController: WeatherViewController!
 
     override func setUpWithError() throws {
         continueAfterFailure = false
         let bundle = Bundle(for: type(of: self))
         let storyBoard = UIStoryboard(name: "Main", bundle: bundle)
-        self.mockviewController =  storyBoard.instantiateInitialViewController() as? ViewController
+        self.mockviewController =  storyBoard.instantiateInitialViewController() as? WeatherViewController
         self.mockviewController.loadView()
         self.mockviewController.viewDidLoad()
     }
