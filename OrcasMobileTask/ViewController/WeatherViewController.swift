@@ -20,11 +20,7 @@ class WeatherViewController: UIViewController, UISearchBarDelegate, UITableViewD
             tableView.reloadData()
         }
     }
-    var weatherFeed: WeatherModel? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var weatherFeed: WeatherModel?
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
